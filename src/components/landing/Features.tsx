@@ -1,36 +1,21 @@
 
-import { Brain, BarChart3, MessageSquare, Target, Users, Lightbulb } from "lucide-react";
+import { Brain, BarChart3, Target } from "lucide-react";
 
 const features = [
   {
     icon: Brain,
     title: "AI-Powered Feedback",
-    description: "Generate rich, qualitative feedback suggestions that go beyond generic comments. Our AI understands context and provides meaningful insights."
+    description: "Generate rich, qualitative feedback that goes beyond generic comments"
   },
   {
     icon: BarChart3,
-    title: "Advanced Analytics Dashboard",
-    description: "Identify class-wide patterns, common misconceptions, and learning gaps with comprehensive data visualization and reporting."
-  },
-  {
-    icon: MessageSquare,
-    title: "Customizable Responses",
-    description: "Review, edit, and personalize AI-generated feedback before delivery. Maintain your teaching voice while leveraging AI intelligence."
+    title: "Advanced Analytics",
+    description: "Identify class-wide patterns and learning gaps with comprehensive insights"
   },
   {
     icon: Target,
-    title: "Targeted Support Identification",
-    description: "Automatically flag students who need additional support based on assessment data and learning patterns."
-  },
-  {
-    icon: Users,
-    title: "Differentiated Strategies",
-    description: "Receive personalized instructional strategies and learning path recommendations tailored to individual student needs."
-  },
-  {
-    icon: Lightbulb,
-    title: "Actionable Intelligence",
-    description: "Transform assessment data into concrete teaching actions with data-driven insights that directly inform your practice."
+    title: "Targeted Support",
+    description: "Automatically flag students who need additional support based on assessment data"
   }
 ];
 
@@ -42,27 +27,26 @@ export const Features = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Sophisticated Teaching Tools for Modern Educators
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Move beyond simple grading with AI that understands pedagogy and provides 
-            actionable insights to enhance your teaching effectiveness.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Transform assessment data into actionable teaching insights
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group p-8 bg-white rounded-xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              className="text-center group"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center mb-6 group-hover:from-indigo-200 group-hover:to-purple-200 transition-colors duration-300">
-                <feature.icon className="w-6 h-6 text-indigo-600" />
+              <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300 group-hover:scale-110">
+                <feature.icon className="w-10 h-10 text-indigo-600" />
               </div>
               
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {feature.title}
               </h3>
               
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
             </div>
