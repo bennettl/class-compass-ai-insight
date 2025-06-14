@@ -3,6 +3,7 @@ import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
 import { Benefits } from "@/components/landing/Benefits";
 import { Testimonials } from "@/components/landing/Testimonials";
+import { FerpaCompliance } from "@/components/landing/FerpaCompliance";
 import { Pricing } from "@/components/landing/Pricing";
 import { Footer } from "@/components/landing/Footer";
 
@@ -13,6 +14,7 @@ const Index = () => {
       <Features />
       <Benefits />
       <Testimonials />
+      <FerpaCompliance />
       <Pricing />
       <Footer />
     </div>
