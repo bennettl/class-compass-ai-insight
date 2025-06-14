@@ -49,7 +49,7 @@ export const Hero = () => {
               style={{ 
                 '@media (min-width: 1024px)': { textAlign: 'left' },
                 '@media (min-width: 640px)': { fontSize: '4rem' },
-                '@media (min-width: 1024px)': { fontSize: '4.5rem' },
+                '@media (min-width: 1280px)': { fontSize: '4.5rem' },
                 lineHeight: 1.1,
                 marginTop: '1.5rem',
                 marginBottom: '1.5rem'
