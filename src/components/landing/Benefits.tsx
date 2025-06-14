@@ -1,7 +1,6 @@
 
-import { CheckCircle, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Container, Title, Text, Tabs, Grid, Button, Paper, Box, Group, List, ThemeIcon } from '@mantine/core';
+import { IconCheck, IconArrowRight } from '@tabler/icons-react';
 
 const benefitsByRole = {
   teachers: [
@@ -47,155 +46,265 @@ const roleDescriptions = {
 
 export const Benefits = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+    <Box
+      style={{
+        background: 'linear-gradient(135deg, #f9fafb 0%, #eff6ff 100%)'
+      }}
+      py={80}
+    >
+      <Container size="xl">
+        <Box ta="center" mb={48}>
+          <Title order={2} size="2.25rem" fw={700} c="gray.9" mb="lg">
             Why Educational Professionals Choose SupaClass
-          </h2>
-        </div>
+          </Title>
+        </Box>
         
-        <Tabs defaultValue="teachers" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-12 bg-white shadow-lg">
-            <TabsTrigger value="teachers" className="text-sm font-medium">Teachers</TabsTrigger>
-            <TabsTrigger value="assistants" className="text-sm font-medium">Teaching Assistants</TabsTrigger>
-            <TabsTrigger value="students" className="text-sm font-medium">Students</TabsTrigger>
-            <TabsTrigger value="admins" className="text-sm font-medium">Administrators</TabsTrigger>
-          </TabsList>
+        <Tabs defaultValue="teachers" variant="pills">
+          <Tabs.List
+            grow
+            style={{
+              backgroundColor: 'white',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+              marginBottom: '3rem',
+              padding: '0.25rem',
+              borderRadius: '0.75rem'
+            }}
+          >
+            <Tabs.Tab value="teachers" fw={500} size="sm">Teachers</Tabs.Tab>
+            <Tabs.Tab value="assistants" fw={500} size="sm">Teaching Assistants</Tabs.Tab>
+            <Tabs.Tab value="students" fw={500} size="sm">Students</Tabs.Tab>
+            <Tabs.Tab value="admins" fw={500} size="sm">Administrators</Tabs.Tab>
+          </Tabs.List>
           
           {Object.entries(benefitsByRole).map(([role, benefits]) => (
-            <TabsContent key={role} value={role}>
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <p className="text-xl text-gray-600 mb-8">
+            <Tabs.Panel key={role} value={role}>
+              <Grid>
+                <Grid.Col span={{ base: 12, lg: 6 }}>
+                  <Text size="xl" c="gray.6" mb="xl">
                     {roleDescriptions[role as keyof typeof roleDescriptions]}
-                  </p>
+                  </Text>
                   
-                  <div className="space-y-4 mb-8">
+                  <List
+                    spacing="md"
+                    mb="xl"
+                    icon={
+                      <ThemeIcon color="green" size={24} radius="xl">
+                        <IconCheck size={16} />
+                      </ThemeIcon>
+                    }
+                  >
                     {benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-center">
-                        <CheckCircle className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 font-medium">{benefit}</span>
-                      </div>
+                      <List.Item key={index}>
+                        <Text c="gray.7" fw={500}>{benefit}</Text>
+                      </List.Item>
                     ))}
-                  </div>
+                  </List>
                   
-                  <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg">
+                  <Button
+                    size="lg"
+                    color="indigo"
+                    rightSection={<IconArrowRight size={20} />}
+                    style={{
+                      fontSize: '1.125rem',
+                      fontWeight: 600,
+                      padding: '1rem 2rem',
+                      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+                    }}
+                  >
                     Start Your Free Trial
-                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                </div>
+                </Grid.Col>
                 
-                <div className="relative">
-                  <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                    <div className="space-y-6">
-                      <div className="border-b border-gray-200 pb-4">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <Grid.Col span={{ base: 12, lg: 6 }}>
+                  <Box style={{ position: 'relative' }}>
+                    <Paper
+                      shadow="xl"
+                      p="xl"
+                      radius="xl"
+                      style={{
+                        border: '1px solid var(--mantine-color-gray-2)'
+                      }}
+                    >
+                      <Box pb="md" style={{ borderBottom: '1px solid var(--mantine-color-gray-2)' }}>
+                        <Title order={3} size="lg" fw={600} c="gray.9" mb="xs">
                           {role === 'teachers' && 'Student: Emma Johnson'}
                           {role === 'assistants' && 'Section 3A - Chemistry Lab'}
                           {role === 'students' && 'Your Progress Dashboard'}
                           {role === 'admins' && 'Department Analytics'}
-                        </h3>
-                        <p className="text-sm text-gray-600">
+                        </Title>
+                        <Text size="sm" c="gray.6">
                           {role === 'teachers' && 'Math Assessment - Fractions'}
                           {role === 'assistants' && 'Weekly Grading Summary'}
                           {role === 'students' && 'Organic Chemistry Course'}
                           {role === 'admins' && 'Q3 Performance Overview'}
-                        </p>
-                      </div>
+                        </Text>
+                      </Box>
                       
-                      <div className="space-y-4">
+                      <Box mt="md">
                         {role === 'teachers' && (
                           <>
-                            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg border border-yellow-200">
-                              <h4 className="font-medium text-gray-900 mb-2">AI Insight</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              mb="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)',
+                                border: '1px solid #fbbf24'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">AI Insight</Title>
+                              <Text size="sm" c="gray.7">
                                 Emma consistently struggles with mixed numbers. Consider using visual fraction models 
                                 and connecting to real-world examples like cooking measurements.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                             
-                            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Suggested Feedback</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
+                                border: '1px solid #10b981'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Suggested Feedback</Title>
+                              <Text size="sm" c="gray.7">
                                 "Great work on equivalent fractions! Let's practice mixed numbers using pizza slices 
                                 to make it more concrete. Try the interactive fraction tool I've assigned."
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                           </>
                         )}
                         
                         {role === 'assistants' && (
                           <>
-                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Grading Progress</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              mb="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+                                border: '1px solid #3b82f6'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Grading Progress</Title>
+                              <Text size="sm" c="gray.7">
                                 45/50 lab reports graded automatically. 5 flagged for manual review. 
                                 Average completion time: 2.3 minutes per report.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                             
-                            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Consistency Check</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #e9d5ff 0%, #ddd6fe 100%)',
+                                border: '1px solid #8b5cf6'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Consistency Check</Title>
+                              <Text size="sm" c="gray.7">
                                 Your grading aligns 94% with course standards. 
                                 3 students need additional support in titration calculations.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                           </>
                         )}
                         
                         {role === 'students' && (
                           <>
-                            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Your Strengths</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              mb="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
+                                border: '1px solid #10b981'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Your Strengths</Title>
+                              <Text size="sm" c="gray.7">
                                 Excellent grasp of molecular structure! You're in the top 15% 
                                 for reaction mechanism problems.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                             
-                            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-4 rounded-lg border border-orange-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Focus Areas</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #fed7aa 0%, #fca5a5 100%)',
+                                border: '1px solid #f59e0b'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Focus Areas</Title>
+                              <Text size="sm" c="gray.7">
                                 Practice stereochemistry concepts. Try the 3D molecular viewer 
                                 and complete practice set #7 by Friday.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                           </>
                         )}
                         
                         {role === 'admins' && (
                           <>
-                            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-lg border border-indigo-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Department Metrics</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              mb="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)',
+                                border: '1px solid #6366f1'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Department Metrics</Title>
+                              <Text size="sm" c="gray.7">
                                 Student satisfaction up 23%. Average grading time reduced by 40%. 
                                 Learning outcomes improved across 8 of 10 measured areas.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                             
-                            <div className="bg-gradient-to-r from-teal-50 to-cyan-50 p-4 rounded-lg border border-teal-200">
-                              <h4 className="font-medium text-gray-900 mb-2">Cost Efficiency</h4>
-                              <p className="text-sm text-gray-700">
+                            <Paper
+                              p="md"
+                              radius="md"
+                              style={{
+                                background: 'linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%)',
+                                border: '1px solid #14b8a6'
+                              }}
+                            >
+                              <Title order={4} fw={500} c="gray.9" mb="xs">Cost Efficiency</Title>
+                              <Text size="sm" c="gray.7">
                                 $47K saved in TA hours this semester. ROI of 340% achieved 
                                 within first 6 months of implementation.
-                              </p>
-                            </div>
+                              </Text>
+                            </Paper>
                           </>
                         )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Decorative elements */}
-                  <div className="absolute -z-10 -top-4 -right-4 w-72 h-72 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full opacity-50 blur-3xl"></div>
-                </div>
-              </div>
-            </TabsContent>
+                      </Box>
+                    </Paper>
+                    
+                    {/* Decorative elements */}
+                    <Box
+                      style={{
+                        position: 'absolute',
+                        zIndex: -1,
+                        top: '-1rem',
+                        right: '-1rem',
+                        width: '18rem',
+                        height: '18rem',
+                        background: 'linear-gradient(135deg, #e0e7ff 0%, #e9d5ff 100%)',
+                        borderRadius: '50%',
+                        opacity: 0.5,
+                        filter: 'blur(3rem)'
+                      }}
+                    />
+                  </Box>
+                </Grid.Col>
+              </Grid>
+            </Tabs.Panel>
           ))}
         </Tabs>
-      </div>
-    </section>
+      </Container>
+    </Box>
   );
 };
