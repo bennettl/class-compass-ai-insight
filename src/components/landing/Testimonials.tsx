@@ -1,4 +1,3 @@
-
 import { Container, Title, Text, Paper, Box, Badge, ThemeIcon } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 
@@ -67,11 +66,6 @@ export const Testimonials = () => {
             align="start"
             slidesToScroll={1}
             loop
-            breakpoints={[
-              { maxWidth: 'md', slideSize: '33.333333%' },
-              { maxWidth: 'sm', slideSize: '50%' },
-              { maxWidth: 'xs', slideSize: '100%' }
-            ]}
             styles={{
               control: {
                 display: 'none',
