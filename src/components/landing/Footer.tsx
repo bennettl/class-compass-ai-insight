@@ -1,118 +1,84 @@
 
-import { Container, Title, Text, Paper, Box, Group, Grid, ThemeIcon } from '@mantine/core';
-import { IconBook, IconMail, IconPhone, IconMapPin } from '@tabler/icons-react';
+import { BookOpen, Mail, Phone, MapPin } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <Box py={64} bg="gray.9" c="white">
-      <Container size="xl">
-        <Grid>
-          <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-            <Group mb="xl">
-              <IconBook size={32} color="var(--mantine-color-indigo-4)" />
-              <Text size="xl" fw={700}>SupaClass</Text>
-            </Group>
-            <Text c="gray.4" mb="xl">
+    <footer className="bg-gray-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div className="flex items-center mb-6">
+              <BookOpen className="w-8 h-8 text-indigo-400 mr-3" />
+              <span className="text-2xl font-bold">SupaClass</span>
+            </div>
+            <p className="text-gray-400 mb-6">
               Empowering educators with AI-powered teaching intelligence and sophisticated feedback capabilities.
-            </Text>
-            <Group>
-              <ThemeIcon
-                size={40}
-                radius="md"
-                color="indigo"
-                style={{
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s',
-                  '&:hover': {
-                    backgroundColor: 'var(--mantine-color-indigo-7)'
-                  }
-                }}
-              >
-                <Text size="sm" fw={700}>f</Text>
-              </ThemeIcon>
-              <ThemeIcon
-                size={40}
-                radius="md"
-                color="indigo"
-                style={{
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s',
-                  '&:hover': {
-                    backgroundColor: 'var(--mantine-color-indigo-7)'
-                  }
-                }}
-              >
-                <Text size="sm" fw={700}>t</Text>
-              </ThemeIcon>
-              <ThemeIcon
-                size={40}
-                radius="md"
-                color="indigo"
-                style={{
-                  cursor: 'pointer',
-                  transition: 'background-color 0.2s',
-                  '&:hover': {
-                    backgroundColor: 'var(--mantine-color-indigo-7)'
-                  }
-                }}
-              >
-                <Text size="sm" fw={700}>in</Text>
-              </ThemeIcon>
-            </Group>
-          </Grid.Col>
+            </p>
+            <div className="flex space-x-4">
+              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">f</span>
+              </div>
+              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">t</span>
+              </div>
+              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center hover:bg-indigo-700 transition-colors cursor-pointer">
+                <span className="text-sm font-bold">in</span>
+              </div>
+            </div>
+          </div>
           
-          <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-            <Title order={3} size="lg" fw={600} mb="xl">Product</Title>
-            <Box style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Features</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Pricing</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Integrations</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>API</Text>
-            </Box>
-          </Grid.Col>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Product</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Integrations</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">API</a></li>
+            </ul>
+          </div>
           
-          <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-            <Title order={3} size="lg" fw={600} mb="xl">Resources</Title>
-            <Box style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Help Center</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Blog</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Webinars</Text>
-              <Text component="a" href="#" c="gray.4" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Case Studies</Text>
-            </Box>
-          </Grid.Col>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Resources</h3>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+            </ul>
+          </div>
           
-          <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
-            <Title order={3} size="lg" fw={600} mb="xl">Contact</Title>
-            <Box style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Group>
-                <IconMail size={20} color="var(--mantine-color-gray-4)" />
-                <Text c="gray.4">hello@supaclass.ai</Text>
-              </Group>
-              <Group>
-                <IconPhone size={20} color="var(--mantine-color-gray-4)" />
-                <Text c="gray.4">1-800-SUPACLASS</Text>
-              </Group>
-              <Group>
-                <IconMapPin size={20} color="var(--mantine-color-gray-4)" />
-                <Text c="gray.4">San Francisco, CA</Text>
-              </Group>
-            </Box>
-          </Grid.Col>
-        </Grid>
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Contact</h3>
+            <div className="space-y-4">
+              <div className="flex items-center text-gray-400">
+                <Mail className="w-5 h-5 mr-3" />
+                <span>hello@supaclass.ai</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <Phone className="w-5 h-5 mr-3" />
+                <span>1-800-SUPACLASS</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <MapPin className="w-5 h-5 mr-3" />
+                <span>San Francisco, CA</span>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <Box mt={48} pt="xl" style={{ borderTop: '1px solid var(--mantine-color-gray-8)' }}>
-          <Group justify="space-between" style={{ '@media (max-width: 768px)': { flexDirection: 'column', gap: '1rem' } }}>
-            <Text size="sm" c="gray.4">
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
               © 2024 SupaClass. All rights reserved.
-            </Text>
-            <Group>
-              <Text component="a" href="#" c="gray.4" size="sm" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Privacy Policy</Text>
-              <Text component="a" href="#" c="gray.4" size="sm" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Terms of Service</Text>
-              <Text component="a" href="#" c="gray.4" size="sm" style={{ textDecoration: 'none', transition: 'color 0.2s', '&:hover': { color: 'white' } }}>Cookie Policy</Text>
-            </Group>
-          </Group>
-        </Box>
-      </Container>
-    </Box>
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };

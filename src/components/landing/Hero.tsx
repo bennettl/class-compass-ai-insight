@@ -1,261 +1,106 @@
-import { Button, Container, Grid, Text, Title, Group, Badge, Box, Paper, Progress, ThemeIcon } from '@mantine/core';
-import { IconArrowRight, IconPlayerPlay, IconBook, IconUsers, IconTrendingUp, IconActivity } from '@tabler/icons-react';
+
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play, BookOpen, Users, TrendingUp } from "lucide-react";
 
 export const Hero = () => {
-  const animationStyle = {
-    animation: 'fade-in 0.5s ease-out forwards',
-    opacity: 0,
-  };
-
   return (
-    <Box
-      style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f3e8ff 100%)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
-      py={80}
-    >
+    <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background decoration */}
-      <Box
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.4,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-        }}
-      />
+      <div className="absolute inset-0 opacity-40" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+      }}></div>
       
-      <Container size="xl" style={{ position: 'relative' }}>
-        <Grid>
-          <Grid.Col span={{ base: 12, lg: 6 }}>
-            <Group justify="center" style={{ '@media (min-width: 1024px)': { justifyContent: 'flex-start' } }}>
-              <Badge
-                size="lg"
-                variant="light"
-                color="indigo"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                  backdropFilter: 'blur(4px)',
-                  border: '1px solid rgba(99, 102, 241, 0.3)'
-                }}
-                leftSection={<IconTrendingUp size={16} />}
-              >
-                AI-Powered Teaching Assistant
-              </Badge>
-            </Group>
+      <div className="relative max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="text-center lg:text-left">
+            <div className="inline-flex items-center px-4 py-2 bg-white/70 backdrop-blur-sm rounded-full text-sm font-medium text-indigo-700 mb-6 border border-indigo-200/50">
+              <TrendingUp className="w-4 h-4 mr-2" />
+              AI-Powered Teaching Assistant
+            </div>
             
-            <Title
-              order={1}
-              size="3.5rem"
-              fw={700}
-              ta="center"
-              style={{ 
-                '@media (min-width: 1024px)': { textAlign: 'left' },
-                '@media (min-width: 640px)': { fontSize: '4rem' },
-                '@media (min-width: 1280px)': { fontSize: '4.5rem' },
-                lineHeight: 1.1,
-                marginTop: '1.5rem',
-                marginBottom: '1.5rem'
-              }}
-            >
-              Transform Your{' '}
-              <Text
-                span
-                variant="gradient"
-                gradient={{ from: 'indigo.6', to: 'violet.6', deg: 45 }}
-              >
-                Teaching
-              </Text>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Transform Your 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600"> Teaching</span>
               <br />
               with AI Intelligence
-            </Title>
+            </h1>
             
-            <Text
-              size="xl"
-              c="gray.6"
-              ta="center"
-              style={{ 
-                '@media (min-width: 1024px)': { textAlign: 'left' },
-                maxWidth: '48rem',
-                marginBottom: '2rem'
-              }}
-            >
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl">
               SupaClass empowers educators with sophisticated feedback capabilities and actionable classroom intelligence. 
               Go beyond grading—unlock personalized learning insights for every student.
-            </Text>
+            </p>
             
-            <Group
-              justify="center"
-              style={{ 
-                '@media (min-width: 1024px)': { justifyContent: 'flex-start' },
-                '@media (max-width: 640px)': { flexDirection: 'column' }
-              }}
-              gap="md"
-            >
-              <Button
-                size="lg"
-                color="indigo"
-                rightSection={<IconArrowRight size={20} />}
-                style={{
-                  fontSize: '1.125rem',
-                  fontWeight: 600,
-                  padding: '1rem 2rem',
-                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.2s',
-                  '&:hover': {
-                    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
-                  }
-                }}
-              >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
                 Start Free Trial
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                color="gray"
-                leftSection={<IconPlayerPlay size={20} />}
-                style={{
-                  fontSize: '1.125rem',
-                  fontWeight: 600,
-                  padding: '1rem 2rem',
-                  borderWidth: '2px',
-                  transition: 'all 0.2s',
-                  '&:hover': {
-                    borderColor: 'var(--mantine-color-indigo-3)',
-                    color: 'var(--mantine-color-indigo-6)'
-                  }
-                }}
-              >
+              <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-gray-300 hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">
+                <Play className="mr-2 w-5 h-5" />
                 Watch Demo
               </Button>
-            </Group>
+            </div>
             
-            <Group
-              justify="center"
-              style={{ 
-                '@media (min-width: 1024px)': { justifyContent: 'flex-start' },
-                marginTop: '2rem'
-              }}
-              gap="xl"
-            >
-              <Group gap="xs">
-                <IconBook size={16} color="var(--mantine-color-gray-5)" />
-                <Text size="sm" c="gray.5">No setup required</Text>
-              </Group>
-              <Group gap="xs">
-                <IconUsers size={16} color="var(--mantine-color-gray-5)" />
-                <Text size="sm" c="gray.5">Trusted by 10,000+ teachers</Text>
-              </Group>
-            </Group>
-          </Grid.Col>
+            <div className="flex items-center justify-center lg:justify-start mt-8 text-sm text-gray-500">
+              <div className="flex items-center mr-6">
+                <BookOpen className="w-4 h-4 mr-2" />
+                No setup required
+              </div>
+              <div className="flex items-center">
+                <Users className="w-4 h-4 mr-2" />
+                Trusted by 10,000+ teachers
+              </div>
+            </div>
+          </div>
           
-          <Grid.Col span={{ base: 12, lg: 6 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Box style={{ position: 'relative', width: '100%', maxWidth: '32rem' }}>
-              {/* Floating Elements */}
-              <Box style={{ ...animationStyle, animationDelay: '600ms', position: 'absolute', top: '-1rem', right: '-1rem', width: '4rem', height: '4rem' }}>
-                <Box style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #a5b4fc, #c4b5fd)', borderRadius: '9999px', opacity: 0.2 }} />
-              </Box>
-              <Box style={{ ...animationStyle, animationDelay: '800ms', position: 'absolute', bottom: '-1.5rem', left: '-1.5rem', width: '3rem', height: '3rem' }}>
-                <Box style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #6ee7b7, #34d399)', borderRadius: '9999px', opacity: 0.2 }} />
-              </Box>
-
-              {/* Main Dashboard Container */}
-              <Paper
-                shadow="xl"
-                radius="xl"
-                p="xl"
-                style={{
-                  ...animationStyle,
-                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}
-              >
-                {/* Header */}
-                <Group justify="space-between" mb="lg">
-                  <Title order={4} style={{ color: '#1f2937' }}>Classroom Analytics</Title>
-                  <Badge color="green" variant="light">Live</Badge>
-                </Group>
-
-                {/* Common Misconceptions Card */}
-                <Paper
-                  radius="lg"
-                  p="md"
-                  mb="md"
-                  withBorder
-                  style={{
-                    ...animationStyle,
-                    animationDelay: '200ms',
-                    background: 'linear-gradient(135deg, #f0fdf4, #ecfdf5)',
-                    borderColor: '#d1fae5',
-                  }}
-                >
-                  <Group justify="space-between" wrap="nowrap" align="start">
-                    <Box style={{ flexGrow: 1 }}>
-                      <Text fw={500} c="gray.8">Common Misconceptions</Text>
-                      <Text size="sm" c="gray.6">Fractions - 73% of students</Text>
-                    </Box>
-                    <ThemeIcon color="green" variant="light" size="lg" radius="md">
-                      <IconTrendingUp size={20} />
-                    </ThemeIcon>
-                  </Group>
-                  <Progress value={73} color="green" size="sm" mt="sm" radius="xl" />
-                </Paper>
-
-                {/* Student Engagement Card */}
-                <Paper
-                  radius="lg"
-                  p="md"
-                  mb="md"
-                  withBorder
-                  style={{
-                    ...animationStyle,
-                    animationDelay: '400ms',
-                    background: 'linear-gradient(135deg, #f0f9ff, #eff6ff)',
-                    borderColor: '#dbeafe',
-                  }}
-                >
-                  <Group justify="space-between" wrap="nowrap" align="start">
-                    <Box style={{ flexGrow: 1 }}>
-                      <Text fw={500} c="gray.8">Student Engagement</Text>
-                      <Text size="sm" c="gray.6">82% participation rate</Text>
-                    </Box>
-                    <ThemeIcon color="blue" variant="light" size="lg" radius="md">
-                      <IconActivity size={20} />
-                    </ThemeIcon>
-                  </Group>
-                </Paper>
-
-                {/* Personalized Feedback Card */}
-                <Paper
-                  radius="lg"
-                  p="md"
-                  withBorder
-                  style={{
-                    ...animationStyle,
-                    animationDelay: '600ms',
-                    background: 'linear-gradient(135deg, #f5f3ff, #faf5ff)',
-                    borderColor: '#e9d5ff',
-                  }}
-                >
-                  <Group justify="space-between" wrap="nowrap" align="start">
-                    <Box style={{ flexGrow: 1 }}>
-                      <Text fw={500} c="gray.8">Personalized Feedback</Text>
-                      <Text size="sm" c="gray.6">12 opportunities identified</Text>
-                    </Box>
-                    <ThemeIcon color="violet" variant="light" size="lg" radius="md">
-                      <IconBook size={20} />
-                    </ThemeIcon>
-                  </Group>
-                </Paper>
-              </Paper>
-            </Box>
-          </Grid.Col>
-        </Grid>
-      </Container>
-    </Box>
+          <div className="relative">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200/50 backdrop-blur-sm">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900">Classroom Analytics</h3>
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200/50">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Common Misconceptions</p>
+                      <p className="text-xs text-gray-600">Fractions - 73% of students</p>
+                    </div>
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                      <TrendingUp className="w-6 h-6 text-green-600" />
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200/50">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Students Needing Support</p>
+                      <p className="text-xs text-gray-600">5 students flagged</p>
+                    </div>
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Users className="w-6 h-6 text-blue-600" />
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg border border-purple-200/50">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Personalized Strategies</p>
+                      <p className="text-xs text-gray-600">12 recommendations ready</p>
+                    </div>
+                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <BookOpen className="w-6 h-6 text-purple-600" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floating elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-10 animate-pulse delay-1000"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };

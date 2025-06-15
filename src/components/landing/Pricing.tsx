@@ -1,6 +1,6 @@
 
-import { Container, Title, Text, Paper, Button, List, ThemeIcon, Grid, Box, Badge } from '@mantine/core';
-import { IconCheck, IconArrowRight } from '@tabler/icons-react';
+import { Button } from "@/components/ui/button";
+import { Check, ArrowRight } from "lucide-react";
 
 const plans = [
   {
@@ -54,118 +54,69 @@ const plans = [
 
 export const Pricing = () => {
   return (
-    <Box
-      py={80}
-      style={{
-        background: 'linear-gradient(135deg, #f9fafb 0%, #eef2ff 100%)'
-      }}
-    >
-      <Container size="xl">
-        <Box ta="center" mb={64}>
-          <Title order={2} size="2.25rem" fw={700} c="gray.9" mb="md">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-indigo-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Choose Your Plan
-          </Title>
-          <Text size="xl" c="gray.6" maw={768} mx="auto">
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Start with our free plan and upgrade as you grow. All plans include our core AI feedback features.
-          </Text>
-        </Box>
+          </p>
+        </div>
         
-        <Grid justify="center" maw={1280} mx="auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
-            <Grid.Col key={index} span={{ base: 12, md: 4 }}>
-              <Paper
-                p="xl"
-                radius="xl"
-                shadow="lg"
-                style={{
-                  position: 'relative',
-                  border: plan.popular ? '2px solid var(--mantine-color-indigo-5)' : '2px solid var(--mantine-color-gray-2)',
-                  transform: plan.popular ? 'scale(1.05)' : 'scale(1)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
-              >
-                {plan.popular && (
-                  <Badge
-                    color="indigo"
-                    size="lg"
-                    style={{
-                      position: 'absolute',
-                      top: '-1rem',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      padding: '0.5rem 1.5rem'
-                    }}
-                  >
+            <div key={index} className={`relative bg-white rounded-2xl shadow-lg border-2 p-8 ${plan.popular ? 'border-indigo-500 scale-105' : 'border-gray-200'}`}>
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-indigo-500 text-white px-6 py-2 rounded-full text-sm font-semibold">
                     Most Popular
-                  </Badge>
-                )}
-                
-                <Box ta="center" mb="xl">
-                  <Title order={3} size="1.5rem" fw={700} c="gray.9" mb="xs">{plan.name}</Title>
-                  <Text c="gray.6" mb="md">{plan.description}</Text>
-                  <Box style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
-                    <Text size="2.5rem" fw={700} c="gray.9">{plan.price}</Text>
-                    {plan.period && <Text c="gray.6" ml="xs">{plan.period}</Text>}
-                  </Box>
-                </Box>
-                
-                <List
-                  spacing="md"
-                  mb="xl"
-                  style={{ flex: 1 }}
-                  icon={
-                    <ThemeIcon color="green" size={20} radius="xl">
-                      <IconCheck size={12} />
-                    </ThemeIcon>
-                  }
-                >
-                  {plan.features.map((feature, featureIndex) => (
-                    <List.Item key={featureIndex}>
-                      <Text c="gray.7">{feature}</Text>
-                    </List.Item>
-                  ))}
-                </List>
-                
-                <Button
-                  fullWidth
-                  size="lg"
-                  color={plan.popular ? "indigo" : "gray"}
-                  variant={plan.popular ? "filled" : "light"}
-                  rightSection={<IconArrowRight size={20} />}
-                  style={{
-                    fontSize: '1.125rem',
-                    fontWeight: 600,
-                    padding: '0.75rem 0',
-                    borderRadius: '0.5rem',
-                    transition: 'all 0.2s',
-                    ...(plan.popular && {
-                      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-                    })
-                  }}
-                >
-                  {plan.cta}
-                </Button>
-              </Paper>
-            </Grid.Col>
+                  </span>
+                </div>
+              )}
+              
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                <p className="text-gray-600 mb-4">{plan.description}</p>
+                <div className="flex items-baseline justify-center">
+                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                  {plan.period && <span className="text-gray-600 ml-1">{plan.period}</span>}
+                </div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center">
+                    <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                    <span className="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Button 
+                className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-200 ${
+                  plan.popular 
+                    ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg' 
+                    : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+                }`}
+              >
+                {plan.cta}
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
           ))}
-        </Grid>
+        </div>
         
-        <Box ta="center" mt={48}>
-          <Text c="gray.6">
-            Questions about pricing?{' '}
-            <Text
-              component="a"
-              href="#"
-              c="indigo.6"
-              style={{ textDecoration: 'none', fontWeight: 600 }}
-            >
+        <div className="text-center mt-12">
+          <p className="text-gray-600">
+            Questions about pricing? 
+            <a href="#" className="text-indigo-600 hover:text-indigo-700 font-semibold ml-1">
               Contact our sales team
-            </Text>
-          </Text>
-        </Box>
-      </Container>
-    </Box>
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };

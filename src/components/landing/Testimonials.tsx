@@ -1,134 +1,92 @@
-import { Container, Title, Text, Paper, Box, Badge, ThemeIcon } from '@mantine/core';
-import { Carousel } from '@mantine/carousel';
+
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const universities = [
   {
     name: "Stanford University",
     logo: "STANFORD",
-    color: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)"
+    color: "from-red-500 to-red-600"
   },
   {
     name: "Harvard University", 
     logo: "HARVARD",
-    color: "linear-gradient(135deg, #b91c1c 0%, #991b1b 100%)"
+    color: "from-red-700 to-red-800"
   },
   {
     name: "MIT",
     logo: "MIT",
-    color: "linear-gradient(135deg, #374151 0%, #1f2937 100%)"
+    color: "from-gray-700 to-gray-800"
   },
   {
     name: "UC Berkeley",
     logo: "UC BERKELEY",
-    color: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)"
+    color: "from-blue-600 to-blue-700"
   },
   {
     name: "Yale University",
     logo: "YALE",
-    color: "linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)"
+    color: "from-blue-800 to-blue-900"
   },
   {
     name: "Princeton University",
     logo: "PRINCETON",
-    color: "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)"
+    color: "from-orange-600 to-orange-700"
   },
   {
     name: "University of Chicago",
     logo: "U CHICAGO",
-    color: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)"
+    color: "from-red-600 to-red-700"
   },
   {
     name: "Columbia University",
     logo: "COLUMBIA",
-    color: "linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%)"
+    color: "from-blue-700 to-blue-800"
   }
 ];
 
 export const Testimonials = () => {
   return (
-    <Box py={80} bg="gray.0">
-      <Container size="xl">
-        <Box ta="center" mb={64}>
-          <Title order={2} size="2.25rem" fw={700} c="gray.9" mb="md">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Trusted by Leading Universities
-          </Title>
-          <Text size="xl" c="gray.6" maw={768} mx="auto">
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Join top higher education institutions using SupaClass to enhance teaching effectiveness
-          </Text>
-        </Box>
+          </p>
+        </div>
         
-        <Box maw={1280} mx="auto" style={{ position: 'relative' }}>
+        <div className="relative max-w-5xl mx-auto">
           <Carousel
-            withIndicators={false}
-            withControls={true}
-            slideSize="25%"
-            slideGap="md"
-            align="start"
-            slidesToScroll={1}
-            loop
-            styles={{
-              control: {
-                display: 'none',
-                '@media (min-width: 640px)': {
-                  display: 'flex'
-                }
-              }
+            opts={{
+              align: "start",
+              loop: true,
             }}
+            className="w-full"
           >
-            {universities.map((university, index) => (
-              <Carousel.Slide key={index}>
-                <Paper
-                  p="xl"
-                  radius="xl"
-                  shadow="sm"
-                  h={128}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: '1px solid var(--mantine-color-gray-2)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-                      transform: 'translateY(-4px)'
-                    }
-                  }}
-                >
-                  <ThemeIcon
-                    size={64}
-                    radius="md"
-                    style={{
-                      background: university.color,
-                      color: 'white',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      textAlign: 'center',
-                      lineHeight: 1.2
-                    }}
-                  >
-                    {university.logo}
-                  </ThemeIcon>
-                </Paper>
-              </Carousel.Slide>
-            ))}
+            <CarouselContent className="-ml-4">
+              {universities.map((university, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4">
+                  <div className="flex items-center justify-center p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-32">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${university.color} rounded-lg flex items-center justify-center text-white font-bold text-xs text-center leading-tight`}>
+                      {university.logo}
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
           </Carousel>
-        </Box>
+        </div>
         
-        <Box ta="center" mt={48}>
-          <Badge
-            size="lg"
-            variant="light"
-            color="indigo"
-            style={{
-              background: 'linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%)',
-              border: '1px solid var(--mantine-color-indigo-2)',
-              padding: '0.75rem 1.5rem'
-            }}
-          >
-            <Text fw={600} c="indigo.8">Used by 500+ institutions worldwide</Text>
-          </Badge>
-        </Box>
-      </Container>
-    </Box>
+        <div className="text-center mt-12">
+          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-full border border-indigo-200">
+            <span className="text-indigo-800 font-semibold">Used by 500+ institutions worldwide</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
