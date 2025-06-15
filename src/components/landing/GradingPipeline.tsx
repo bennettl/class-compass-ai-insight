@@ -1,107 +1,109 @@
-import { FileText, Brain, ClipboardCheck, PencilLine, FileCheck, Users, BarChart3 } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+
+import { FileText, Brain, ClipboardCheck, PencilLine, FileCheck, Users, BarChart3, ArrowDown } from "lucide-react";
 
 const pipelineSteps = [
   {
     icon: FileText,
-    title: "Submission Ingestion",
-    description: "Securely accepts various formats, from text to code submissions.",
+    title: "Submit Your Work",
+    description: "Students upload assignments in any format - essays, code, presentations, or PDFs.",
     color: "blue"
   },
   {
     icon: Brain,
-    title: "AI Pre-analysis",
-    description: "Structures submitted data and performs initial analysis for key concepts.",
+    title: "AI Reads Everything",
+    description: "Our AI carefully reads and understands what each student submitted.",
     color: "indigo"
   },
   {
     icon: ClipboardCheck,
-    title: "Rubric-based Evaluation",
-    description: "Scores work against predefined rubrics with high accuracy and consistency.",
+    title: "Grade Against Your Rubric",
+    description: "Scores each assignment using your exact grading criteria and standards.",
     color: "purple"
   },
   {
     icon: PencilLine,
-    title: "Qualitative Feedback",
-    description: "Generates nuanced, constructive comments beyond simple right/wrong.",
+    title: "Write Helpful Comments",
+    description: "Provides specific feedback to help students improve their work.",
     color: "pink"
   },
   {
     icon: FileCheck,
-    title: "Authenticity Check",
-    description: "Cross-references submissions against a vast database for originality.",
+    title: "Check for Originality",
+    description: "Ensures work is authentic and flags any potential plagiarism issues.",
     color: "red"
   },
   {
     icon: Users,
-    title: "Human-in-the-Loop",
-    description: "Flags edge cases for educator review, ensuring pedagogical alignment.",
+    title: "Teacher Review",
+    description: "Highlights unusual cases that might need your personal attention.",
     color: "orange"
   },
   {
     icon: BarChart3,
-    title: "Insight Synthesis",
-    description: "Aggregates class-wide data to reveal trends and actionable insights.",
+    title: "Class Insights",
+    description: "Shows patterns across all students to help improve your teaching.",
     color: "green"
   }
 ];
 
 const colorClasses = {
-    blue: { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-200' },
-    indigo: { bg: 'bg-indigo-100', text: 'text-indigo-700', border: 'border-indigo-200' },
-    purple: { bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-200' },
-    pink: { bg: 'bg-pink-100', text: 'text-pink-700', border: 'border-pink-200' },
-    red: { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200' },
-    orange: { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
-    green: { bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200' }
+    blue: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', dot: 'bg-blue-500' },
+    indigo: { bg: 'bg-indigo-50', text: 'text-indigo-600', border: 'border-indigo-200', dot: 'bg-indigo-500' },
+    purple: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200', dot: 'bg-purple-500' },
+    pink: { bg: 'bg-pink-50', text: 'text-pink-600', border: 'border-pink-200', dot: 'bg-pink-500' },
+    red: { bg: 'bg-red-50', text: 'text-red-600', border: 'border-red-200', dot: 'bg-red-500' },
+    orange: { bg: 'bg-orange-50', text: 'text-orange-600', border: 'border-orange-200', dot: 'bg-orange-500' },
+    green: { bg: 'bg-green-50', text: 'text-green-600', border: 'border-green-200', dot: 'bg-green-500' }
 };
 
 export const GradingPipeline = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Our Rigorous Grading Pipeline
+            How SupaClass Works
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From submission to insight, every step is designed for accuracy, fairness, and pedagogical value.
+            A simple 7-step process that handles everything from submission to insights.
           </p>
         </div>
         
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
+        <div className="relative max-w-2xl mx-auto">
+          {/* Vertical line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200" aria-hidden="true"></div>
+          
+          <div className="space-y-8">
             {pipelineSteps.map((step, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="p-1 h-full">
-                  <Card className={`h-full border-2 ${colorClasses[step.color as keyof typeof colorClasses].border} hover:shadow-lg transition-shadow duration-300 flex flex-col`}>
-                    <CardContent className="flex flex-col items-center justify-center p-6 text-center flex-grow">
-                        <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center ${colorClasses[step.color as keyof typeof colorClasses].bg} mb-4`}>
-                          <step.icon className={`w-8 h-8 ${colorClasses[step.color as keyof typeof colorClasses].text}`} />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-                        <p className="text-gray-600">{step.description}</p>
-                    </CardContent>
-                  </Card>
+              <div key={index} className="relative flex items-start">
+                {/* Step number and icon */}
+                <div className="relative flex-shrink-0">
+                  <div className={`w-16 h-16 rounded-full ${colorClasses[step.color as keyof typeof colorClasses].bg} border-4 border-white shadow-sm flex items-center justify-center`}>
+                    <step.icon className={`w-7 h-7 ${colorClasses[step.color as keyof typeof colorClasses].text}`} />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full border-2 border-gray-200 flex items-center justify-center">
+                    <span className="text-xs font-bold text-gray-600">{index + 1}</span>
+                  </div>
                 </div>
-              </CarouselItem>
+                
+                {/* Content */}
+                <div className="ml-6 flex-1 pb-8">
+                  <div className={`p-6 rounded-lg ${colorClasses[step.color as keyof typeof colorClasses].bg} border ${colorClasses[step.color as keyof typeof colorClasses].border}`}>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-gray-700">{step.description}</p>
+                  </div>
+                </div>
+                
+                {/* Arrow between steps */}
+                {index < pipelineSteps.length - 1 && (
+                  <div className="absolute left-8 -translate-x-1/2 top-16 z-10">
+                    <ArrowDown className="w-5 h-5 text-gray-400" />
+                  </div>
+                )}
+              </div>
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
-        </Carousel>
+          </div>
+        </div>
       </div>
     </section>
   );
