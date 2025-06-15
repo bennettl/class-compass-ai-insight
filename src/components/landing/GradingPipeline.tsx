@@ -1,5 +1,12 @@
-
-import { FileText, Brain, ClipboardCheck, PencilLine, FileCheck, Users, BarChart3, ArrowDown } from "lucide-react";
+import { FileText, Brain, ClipboardCheck, PencilLine, FileCheck, Users, BarChart3 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 const pipelineSteps = [
   {
@@ -59,7 +66,7 @@ const colorClasses = {
 export const GradingPipeline = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Our Rigorous Grading Pipeline
@@ -69,46 +76,32 @@ export const GradingPipeline = () => {
           </p>
         </div>
         
-        <div className="relative">
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-px bg-gray-200 hidden md:block" aria-hidden="true"></div>
-          
-          <div className="space-y-12 md:space-y-16">
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
             {pipelineSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="md:flex items-center md:space-x-8">
-                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8 md:order-2'}`}>
-                     <div className={`p-6 rounded-xl border ${colorClasses[step.color as keyof typeof colorClasses].border} bg-white shadow-sm hover:shadow-lg transition-shadow duration-300`}>
-                      <div className="flex items-start space-x-4">
-                        <div className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${colorClasses[step.color as keyof typeof colorClasses].bg}`}>
-                          <step.icon className={`w-6 h-6 ${colorClasses[step.color as keyof typeof colorClasses].text}`} />
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <div className="p-1 h-full">
+                  <Card className={`h-full border-2 ${colorClasses[step.color as keyof typeof colorClasses].border} hover:shadow-lg transition-shadow duration-300 flex flex-col`}>
+                    <CardContent className="flex flex-col items-center justify-center p-6 text-center flex-grow">
+                        <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center ${colorClasses[step.color as keyof typeof colorClasses].bg} mb-4`}>
+                          <step.icon className={`w-8 h-8 ${colorClasses[step.color as keyof typeof colorClasses].text}`} />
                         </div>
-                        <div>
-                           <h3 className="text-xl font-bold text-gray-900">{step.title}</h3>
-                           <p className="mt-1 text-gray-600">{step.description}</p>
-                        </div>
-                      </div>
-                     </div>
-                  </div>
-                  
-                  <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                      <div className="w-8 h-8 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center">
-                        <div className={`w-4 h-4 rounded-full ${colorClasses[step.color as keyof typeof colorClasses].bg}`}></div>
-                      </div>
-                  </div>
-
-                  <div className="md:w-1/2">
-                    {/* Placeholder for future visuals */}
-                  </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                        <p className="text-gray-600">{step.description}</p>
+                    </CardContent>
+                  </Card>
                 </div>
-                 {index < pipelineSteps.length - 1 && (
-                    <div className="mt-6 md:hidden flex justify-center">
-                        <ArrowDown className="w-6 h-6 text-gray-300" />
-                    </div>
-                )}
-              </div>
+              </CarouselItem>
             ))}
-          </div>
-        </div>
+          </CarouselContent>
+          <CarouselPrevious className="hidden sm:flex" />
+          <CarouselNext className="hidden sm:flex" />
+        </Carousel>
       </div>
     </section>
   );
