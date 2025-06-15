@@ -1,7 +1,12 @@
-import { Button, Container, Grid, Text, Title, Group, Badge, Box } from '@mantine/core';
-import { IconArrowRight, IconPlayerPlay, IconBook, IconUsers, IconTrendingUp } from '@tabler/icons-react';
+import { Button, Container, Grid, Text, Title, Group, Badge, Box, Paper, Progress, ThemeIcon } from '@mantine/core';
+import { IconArrowRight, IconPlayerPlay, IconBook, IconUsers, IconTrendingUp, IconActivity } from '@tabler/icons-react';
 
 export const Hero = () => {
+  const animationStyle = {
+    animation: 'fade-in 0.5s ease-out forwards',
+    opacity: 0,
+  };
+
   return (
     <Box
       style={{
@@ -146,60 +151,108 @@ export const Hero = () => {
           </Grid.Col>
           
           <Grid.Col span={{ base: 12, lg: 6 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div className="relative w-full max-w-lg">
-              {/* Main Dashboard Container */}
-              <div className="bg-white rounded-2xl shadow-2xl p-6 border border-indigo-100">
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Classroom Analytics</h3>
-                </div>
-                
-                {/* Common Misconceptions Card */}
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 mb-4 border border-green-100">
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      <h4 className="font-medium text-gray-800">Common Misconceptions</h4>
-                      <p className="text-sm text-gray-600">Fractions - 73% of students</p>
-                    </div>
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                      <IconTrendingUp size={16} className="text-green-600" />
-                    </div>
-                  </div>
-                  <div className="w-full bg-green-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '73%' }}></div>
-                  </div>
-                </div>
-
-                {/* Students Needing Support Card */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 mb-4 border border-blue-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <h4 className="font-medium text-gray-800">Students Needing Support</h4>
-                      <p className="text-sm text-gray-600">5 students flagged</p>
-                    </div>
-                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <IconUsers size={16} className="text-blue-600" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Personalized Strategies Card */}
-                <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-4 border border-purple-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <div>
-                      <h4 className="font-medium text-gray-800">Personalized Strategies</h4>
-                      <p className="text-sm text-gray-600">12 recommendations ready</p>
-                    </div>
-                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                      <IconBook size={16} className="text-purple-600" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+            <Box style={{ position: 'relative', width: '100%', maxWidth: '32rem' }}>
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full opacity-20"></div>
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-20"></div>
-            </div>
+              <Box style={{ ...animationStyle, animationDelay: '600ms', position: 'absolute', top: '-1rem', right: '-1rem', width: '4rem', height: '4rem' }}>
+                <Box style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #a5b4fc, #c4b5fd)', borderRadius: '9999px', opacity: 0.2 }} />
+              </Box>
+              <Box style={{ ...animationStyle, animationDelay: '800ms', position: 'absolute', bottom: '-1.5rem', left: '-1.5rem', width: '3rem', height: '3rem' }}>
+                <Box style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #6ee7b7, #34d399)', borderRadius: '9999px', opacity: 0.2 }} />
+              </Box>
+
+              {/* Main Dashboard Container */}
+              <Paper
+                shadow="xl"
+                radius="xl"
+                p="xl"
+                style={{
+                  ...animationStyle,
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Header */}
+                <Group justify="space-between" mb="lg">
+                  <Title order={4} style={{ color: '#1f2937' }}>Classroom Analytics</Title>
+                  <Badge color="green" variant="light">Live</Badge>
+                </Group>
+
+                {/* Common Misconceptions Card */}
+                <Paper
+                  radius="lg"
+                  p="md"
+                  mb="md"
+                  withBorder
+                  style={{
+                    ...animationStyle,
+                    animationDelay: '200ms',
+                    background: 'linear-gradient(135deg, #f0fdf4, #ecfdf5)',
+                    borderColor: '#d1fae5',
+                  }}
+                >
+                  <Group justify="space-between" wrap="nowrap" align="start">
+                    <Box style={{ flexGrow: 1 }}>
+                      <Text fw={500} c="gray.8">Common Misconceptions</Text>
+                      <Text size="sm" c="gray.6">Fractions - 73% of students</Text>
+                    </Box>
+                    <ThemeIcon color="green" variant="light" size="lg" radius="md">
+                      <IconTrendingUp size={20} />
+                    </ThemeIcon>
+                  </Group>
+                  <Progress value={73} color="green" size="sm" mt="sm" radius="xl" />
+                </Paper>
+
+                {/* Student Engagement Card */}
+                <Paper
+                  radius="lg"
+                  p="md"
+                  mb="md"
+                  withBorder
+                  style={{
+                    ...animationStyle,
+                    animationDelay: '400ms',
+                    background: 'linear-gradient(135deg, #f0f9ff, #eff6ff)',
+                    borderColor: '#dbeafe',
+                  }}
+                >
+                  <Group justify="space-between" wrap="nowrap" align="start">
+                    <Box style={{ flexGrow: 1 }}>
+                      <Text fw={500} c="gray.8">Student Engagement</Text>
+                      <Text size="sm" c="gray.6">82% participation rate</Text>
+                    </Box>
+                    <ThemeIcon color="blue" variant="light" size="lg" radius="md">
+                      <IconActivity size={20} />
+                    </ThemeIcon>
+                  </Group>
+                </Paper>
+
+                {/* Personalized Feedback Card */}
+                <Paper
+                  radius="lg"
+                  p="md"
+                  withBorder
+                  style={{
+                    ...animationStyle,
+                    animationDelay: '600ms',
+                    background: 'linear-gradient(135deg, #f5f3ff, #faf5ff)',
+                    borderColor: '#e9d5ff',
+                  }}
+                >
+                  <Group justify="space-between" wrap="nowrap" align="start">
+                    <Box style={{ flexGrow: 1 }}>
+                      <Text fw={500} c="gray.8">Personalized Feedback</Text>
+                      <Text size="sm" c="gray.6">12 opportunities identified</Text>
+                    </Box>
+                    <ThemeIcon color="violet" variant="light" size="lg" radius="md">
+                      <IconBook size={20} />
+                    </ThemeIcon>
+                  </Group>
+                </Paper>
+              </Paper>
+            </Box>
           </Grid.Col>
         </Grid>
       </Container>
