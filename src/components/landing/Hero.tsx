@@ -1,5 +1,5 @@
 
-import { Button, Container, Grid, Text, Title, Group, Badge, Box } from '@mantine/core';
+import { Button, Container, Grid, Text, Title, Group, Badge, Box, Image } from '@mantine/core';
 import { IconArrowRight, IconPlayerPlay, IconBook, IconUsers, IconTrendingUp } from '@tabler/icons-react';
 
 export const Hero = () => {
@@ -144,6 +144,67 @@ export const Hero = () => {
                 <Text size="sm" c="gray.5">Trusted by 10,000+ teachers</Text>
               </Group>
             </Group>
+          </Grid.Col>
+          
+          <Grid.Col span={{ base: 12, lg: 6 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Box
+              style={{
+                position: 'relative',
+                width: '100%',
+                maxWidth: '500px',
+                aspectRatio: '4/3',
+                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                borderRadius: '1rem',
+                border: '1px solid rgba(99, 102, 241, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '2rem'
+              }}
+            >
+              <Box
+                style={{
+                  width: '80%',
+                  height: '80%',
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  borderRadius: '0.5rem',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  gap: '1rem'
+                }}
+              >
+                <Text size="lg" fw={600} c="gray.7" ta="center">
+                  SupaClass Dashboard
+                </Text>
+                <Box
+                  style={{
+                    width: '60%',
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)',
+                    borderRadius: '2px'
+                  }}
+                />
+                <Box
+                  style={{
+                    width: '80%',
+                    height: '4px',
+                    background: 'rgba(99, 102, 241, 0.3)',
+                    borderRadius: '2px'
+                  }}
+                />
+                <Box
+                  style={{
+                    width: '70%',
+                    height: '4px',
+                    background: 'rgba(99, 102, 241, 0.2)',
+                    borderRadius: '2px'
+                  }}
+                />
+              </Box>
+            </Box>
           </Grid.Col>
         </Grid>
       </Container>
