@@ -1,5 +1,4 @@
-
-import { Button, Container, Grid, Text, Title, Group, Badge, Box, Image } from '@mantine/core';
+import { Button, Container, Grid, Text, Title, Group, Badge, Box } from '@mantine/core';
 import { IconArrowRight, IconPlayerPlay, IconBook, IconUsers, IconTrendingUp } from '@tabler/icons-react';
 
 export const Hero = () => {
@@ -147,64 +146,60 @@ export const Hero = () => {
           </Grid.Col>
           
           <Grid.Col span={{ base: 12, lg: 6 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Box
-              style={{
-                position: 'relative',
-                width: '100%',
-                maxWidth: '500px',
-                aspectRatio: '4/3',
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
-                borderRadius: '1rem',
-                border: '1px solid rgba(99, 102, 241, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: '2rem'
-              }}
-            >
-              <Box
-                style={{
-                  width: '80%',
-                  height: '80%',
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  borderRadius: '0.5rem',
-                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexDirection: 'column',
-                  gap: '1rem'
-                }}
-              >
-                <Text size="lg" fw={600} c="gray.7" ta="center">
-                  SupaClass Dashboard
-                </Text>
-                <Box
-                  style={{
-                    width: '60%',
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%)',
-                    borderRadius: '2px'
-                  }}
-                />
-                <Box
-                  style={{
-                    width: '80%',
-                    height: '4px',
-                    background: 'rgba(99, 102, 241, 0.3)',
-                    borderRadius: '2px'
-                  }}
-                />
-                <Box
-                  style={{
-                    width: '70%',
-                    height: '4px',
-                    background: 'rgba(99, 102, 241, 0.2)',
-                    borderRadius: '2px'
-                  }}
-                />
-              </Box>
-            </Box>
+            <div className="relative w-full max-w-lg">
+              {/* Main Dashboard Container */}
+              <div className="bg-white rounded-2xl shadow-2xl p-6 border border-indigo-100">
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Classroom Analytics</h3>
+                </div>
+                
+                {/* Common Misconceptions Card */}
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 mb-4 border border-green-100">
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <h4 className="font-medium text-gray-800">Common Misconceptions</h4>
+                      <p className="text-sm text-gray-600">Fractions - 73% of students</p>
+                    </div>
+                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                      <IconTrendingUp size={16} className="text-green-600" />
+                    </div>
+                  </div>
+                  <div className="w-full bg-green-200 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '73%' }}></div>
+                  </div>
+                </div>
+
+                {/* Students Needing Support Card */}
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 mb-4 border border-blue-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <h4 className="font-medium text-gray-800">Students Needing Support</h4>
+                      <p className="text-sm text-gray-600">5 students flagged</p>
+                    </div>
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <IconUsers size={16} className="text-blue-600" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Personalized Strategies Card */}
+                <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-4 border border-purple-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <h4 className="font-medium text-gray-800">Personalized Strategies</h4>
+                      <p className="text-sm text-gray-600">12 recommendations ready</p>
+                    </div>
+                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <IconBook size={16} className="text-purple-600" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full opacity-20"></div>
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full opacity-20"></div>
+            </div>
           </Grid.Col>
         </Grid>
       </Container>
