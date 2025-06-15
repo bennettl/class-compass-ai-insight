@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/landing/Testimonials";
 import { FerpaCompliance } from "@/components/landing/FerpaCompliance";
 import { Pricing } from "@/components/landing/Pricing";
 import { Footer } from "@/components/landing/Footer";
+import { GradingPipeline } from "@/components/landing/GradingPipeline";
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <Hero />
       <Features />
       <Benefits />
+      <GradingPipeline />
       <Testimonials />
       <FerpaCompliance />
       <Pricing />
