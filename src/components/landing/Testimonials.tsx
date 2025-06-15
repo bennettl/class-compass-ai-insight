@@ -85,7 +85,7 @@ export const Testimonials = () => {
             <CarouselContent className="-ml-6">
               {caseStudies.map((study, index) => (
                 <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/2">
-                  <Card className="h-full border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden group">
+                  <Card className="h-full border-0 shadow-xl overflow-hidden">
                     <CardContent className="p-0 relative">
                       {/* Background Pattern */}
                       <div className={`absolute inset-0 ${study.bgPattern} opacity-60`}></div>
@@ -95,7 +95,7 @@ export const Testimonials = () => {
                       <div className="relative p-8">
                         {/* Header with University Badge */}
                         <div className="flex items-start justify-between mb-8">
-                          <div className={`relative px-6 py-3 bg-gradient-to-r ${study.color} rounded-2xl shadow-lg transform group-hover:scale-105 transition-transform duration-300`}>
+                          <div className={`relative px-6 py-3 bg-gradient-to-r ${study.color} rounded-2xl shadow-lg`}>
                             <div className="text-white font-bold text-lg">{study.university}</div>
                             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
                               <GraduationCap className="w-3 h-3 text-gray-600" />
@@ -115,21 +115,21 @@ export const Testimonials = () => {
                         
                         {/* Stats Grid */}
                         <div className="grid grid-cols-3 gap-6 mb-8">
-                          <div className="text-center group-hover:scale-105 transition-transform duration-300">
+                          <div className="text-center">
                             <div className="bg-white rounded-2xl p-4 shadow-md mb-2">
                               <Users className="w-6 h-6 text-blue-500 mx-auto mb-2" />
                               <div className="text-2xl font-bold text-gray-900">{study.students}</div>
                             </div>
                             <div className="text-xs text-gray-500 font-medium">Students</div>
                           </div>
-                          <div className="text-center group-hover:scale-105 transition-transform duration-300 delay-75">
+                          <div className="text-center">
                             <div className="bg-white rounded-2xl p-4 shadow-md mb-2">
                               <Clock className="w-6 h-6 text-green-500 mx-auto mb-2" />
                               <div className="text-2xl font-bold text-gray-900">{study.timeReduction}</div>
                             </div>
                             <div className="text-xs text-gray-500 font-medium">Time Saved</div>
                           </div>
-                          <div className="text-center group-hover:scale-105 transition-transform duration-300 delay-150">
+                          <div className="text-center">
                             <div className="bg-white rounded-2xl p-4 shadow-md mb-2">
                               <TrendingUp className="w-6 h-6 text-purple-500 mx-auto mb-2" />
                               <div className="text-2xl font-bold text-gray-900">{study.satisfaction}</div>
@@ -159,13 +159,13 @@ export const Testimonials = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex -left-12 bg-white shadow-lg hover:shadow-xl border-2 hover:scale-110 transition-all duration-300" />
-            <CarouselNext className="hidden sm:flex -right-12 bg-white shadow-lg hover:shadow-xl border-2 hover:scale-110 transition-all duration-300" />
+            <CarouselPrevious className="hidden sm:flex -left-12 bg-white shadow-lg border-2" />
+            <CarouselNext className="hidden sm:flex -right-12 bg-white shadow-lg border-2" />
           </Carousel>
         </div>
         
         <div className="text-center mt-16">
-          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+          <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full shadow-xl">
             <span className="text-white font-semibold text-lg">Used by 500+ institutions worldwide</span>
           </div>
         </div>
