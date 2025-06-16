@@ -1,6 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, BookOpen, Users, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -31,11 +31,13 @@ export const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-                Start Free Trial
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-gray-300 hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">
+              <Link to="/dashboard">
+                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl">
+                  View Demo Dashboard
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-gray-300 hover:border-indigo-300 hover:text-indigo-600">
                 <Play className="mr-2 w-5 h-5" />
                 Watch Demo
               </Button>
